@@ -2,6 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import BasicJavascript from "./pages/BasicJavascript";
+import CallAPIAxios from "./pages/CallAPIAxios";
+import CallAPIVanilla from "./pages/CallVanillaJS";
 import Communication from "./pages/Communication";
 import PropsDinamis from "./pages/PropsDinamis";
 import ReactNativeSvg from "./pages/ReactNativeSvg";
@@ -15,7 +17,9 @@ export default function App() {
         {/* <StateDinamis /> */}
         {/* <Communication /> */}
         {/* <BasicJavascript /> */}
-        <ReactNativeSvg />
+        {/* <ReactNativeSvg /> */}
+        {/* <CallAPIVanilla /> */}
+        <CallAPIAxios />
       </ScrollView>
     </View>
   );
