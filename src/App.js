@@ -5,6 +5,7 @@ import BasicJavascript from "./pages/BasicJavascript";
 import CallAPIAxios from "./pages/CallAPIAxios";
 import CallAPIVanilla from "./pages/CallVanillaJS";
 import Communication from "./pages/Communication";
+import LocalAPI from "./pages/LocalAPI";
 import PropsDinamis from "./pages/PropsDinamis";
 import ReactNativeSvg from "./pages/ReactNativeSvg";
 import StateDinamis from "./pages/StateDinamis";
@@ -19,7 +20,8 @@ export default function App() {
         {/* <BasicJavascript /> */}
         {/* <ReactNativeSvg /> */}
         {/* <CallAPIVanilla /> */}
-        <CallAPIAxios />
+        {/* <CallAPIAxios /> */}
+        <LocalAPI />
       </ScrollView>
     </View>
   );

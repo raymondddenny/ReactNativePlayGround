@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Button, Image } from "react-native";
 import Moment from "moment";
+import axios from "axios";
 
 // Atoms Custom Components
 // import ButtonTouchable from "../../components/atoms/ButtonTouchable";
@@ -21,12 +22,19 @@ const CallAPIAxios = () => {
   });
 
   const getData = () => {
-    fetch("https://reqres.in/api/users/2")
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        setDataUser(json.data);
-      });
+    // Fetch API using vanilla
+    // fetch("https://reqres.in/api/users/2")
+    //   .then((response) => response.json())
+    //   .then((json) => {
+    //     console.log(json);
+    //     setDataUser(json.data);
+    //   });
+
+    // Fetch API using Axios
+    axios.get("https://reqres.in/api/users/3").then((result) => {
+      console.log("result :", result.data.data);
+      setDataUser(result.data.data);
+    });
   };
 
   const postData = () => {
@@ -35,16 +43,24 @@ const CallAPIAxios = () => {
       name: "Denny",
       job: "software engineer",
     };
-    fetch("https://reqres.in/api/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(dataForAPI),
-    })
-      .then((response) => response.json())
-      .then((json) => {
-        console.log("post response : ", json);
-        setDataJson(json);
-      });
+    // fetch("https://reqres.in/api/users", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(dataForAPI),
+    // })
+    //   .then((response) => response.json())
+    //   .then((json) => {
+    //     console.log("post response : ", json);
+    //     setDataJson(json);
+    //   });
+
+    axios
+      .post("https://reqres.in/api/users", dataForAPI)
+      .then((result) => {
+        console.log("result : ", result.data);
+        setDataJson(result.data);
+      })
+      .catch((err) => console.log("error : ", err));
   };
 
   return (
@@ -69,7 +85,9 @@ const CallAPIAxios = () => {
       <Text>Response POST DATA</Text>
       <Text>{dataJson.name}</Text>
       <Text>{dataJson.job}</Text>
-      <Text>{Moment(dataJson.createdAt).format("dddd, MMMM yyyy")}</Text>
+      {dataJson.createdAt.length > 0 && (
+        <Text>{Moment(dataJson.createdAt).format("dddd, MMMM yyyy")}</Text>
+      )}
       <View style={styles.line} />
     </View>
   );
